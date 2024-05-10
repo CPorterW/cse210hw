@@ -1,0 +1,16 @@
+classes
+    Menu
+        DisplayMenu
+        ConfirmExit
+    Entry
+        NewEntry
+        DisplayEntry
+        SaveEntry
+        LoadEntry
+    Journal
+        _currentEntries
+        _lastFileOpened
+    Prompts
+        _prompts
+        _randomPrompt
+        GeneratePrompt
