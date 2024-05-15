@@ -1,24 +1,30 @@
 using System;
-
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 public class MainMenu
 {
-    public static void Main(string[] args)
-    {
-        DisplayMenu();
-    }
+    // static void Main(string[] args)
+    // {
+    //     List<string> currentJournalEntries = new List<string>();
+    //     List<DateTime> dateTimes = [];
+    //     string randomPrompt = "";
+    //     DisplayMenu(randomPrompt, currentJournalEntries, dateTimes);
+    // }
 
-    private static void DisplayMenu()
+    public static void DisplayMenu(List<string> currentJournalEntries, List<DateTime> dateTimes)
     {
+        string randomPrompt;
         bool continueRunning = true;
         while (continueRunning)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to the Journal Program!\n");
-            Console.WriteLine("Please select an option:");
+            Console.WriteLine("Welcome to the Journal Program!\nA perfectly safe place to share your innermost thoughts. \nI definitely won't sell your info or keep it for my own amusement!");
+            Console.WriteLine("Select an option:");
             Console.WriteLine("1 - New Entry");
-            Console.WriteLine("2 - Display Entry");
-            Console.WriteLine("3 - Save Entry");
-            Console.WriteLine("4 - Load Entry");
+            Console.WriteLine("2 - Display Entries");
+            Console.WriteLine("3 - Save Entries");
+            Console.WriteLine("4 - Load Entries");
             Console.WriteLine("0 - Exit");
 
             Console.Write("\nYour choice: ");
@@ -27,19 +33,20 @@ public class MainMenu
             switch (choice)
             {
                 case "1":
-                    NewEntry(); 
+                    randomPrompt = MenuOptions.GeneratePrompt();
+                    currentJournalEntries = MenuOptions.NewEntry(randomPrompt, currentJournalEntries, dateTimes); 
                     break;
                 case "2":
-                    DisplayEntry(); 
+                    MenuOptions.DisplayEntry(currentJournalEntries); 
                     break;
                 case "3":
-                    SaveEntry(); 
+                    MenuOptions.SaveEntry(currentJournalEntries); 
                     break;
                 case "4":
-                    LoadEntry();
+                    currentJournalEntries = MenuOptions.LoadEntry(currentJournalEntries);
                     break;
                 case "0":
-                    if (ConfirmExit())
+                    if (MenuOptions.ConfirmExit())
                     {
                         continueRunning = false;
                     }
@@ -52,36 +59,4 @@ public class MainMenu
             }
         }
     }
-
-    public static void NewEntry()
-    {
-        Console.WriteLine("Creating a new entry...");
-        // Implement your logic here
-    }
-
-    public static void DisplayEntry()
-    {
-        Console.WriteLine("Displaying an entry...");
-        // Implement your logic here
-    }
-
-    public static void SaveEntry()
-    {
-        Console.WriteLine("Saving an entry...");
-        // Implement your logic here
-    }
-
-    public static void LoadEntry()
-    {
-        Console.WriteLine("Loading an entry...");
-        // Implement your logic here
-    }
-
-    public static bool ConfirmExit()
-    {
-        Console.Write("Are you sure you want to exit? (Y/N): ");
-        string input = Console.ReadLine().ToUpper();
-        return input == "Y";
-    }
 }
-
