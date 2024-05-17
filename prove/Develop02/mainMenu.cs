@@ -4,15 +4,7 @@ using System.Globalization;
 using System.IO;
 public class MainMenu
 {
-    // static void Main(string[] args)
-    // {
-    //     List<string> currentJournalEntries = new List<string>();
-    //     List<DateTime> dateTimes = [];
-    //     string randomPrompt = "";
-    //     DisplayMenu(randomPrompt, currentJournalEntries, dateTimes);
-    // }
-
-    public static void DisplayMenu(List<string> currentJournalEntries, List<DateTime> dateTimes)
+    public static void DisplayMenu(List<string> currentJournalEntries)
     {
         string randomPrompt;
         bool continueRunning = true;
@@ -33,20 +25,20 @@ public class MainMenu
             switch (choice)
             {
                 case "1":
-                    randomPrompt = MenuOptions.GeneratePrompt();
-                    currentJournalEntries = MenuOptions.NewEntry(randomPrompt, currentJournalEntries, dateTimes); 
+                    randomPrompt = Prompt.GeneratePrompt();
+                    currentJournalEntries = Entry.NewEntry(randomPrompt, currentJournalEntries); 
                     break;
                 case "2":
-                    MenuOptions.DisplayEntry(currentJournalEntries); 
+                    Entry.DisplayEntry(currentJournalEntries); 
                     break;
                 case "3":
-                    MenuOptions.SaveEntry(currentJournalEntries); 
+                    Entry.SaveEntry(currentJournalEntries); 
                     break;
                 case "4":
-                    currentJournalEntries = MenuOptions.LoadEntry(currentJournalEntries);
+                    currentJournalEntries = Entry.LoadEntry(currentJournalEntries);
                     break;
                 case "0":
-                    if (MenuOptions.ConfirmExit())
+                    if (ConfirmExit())
                     {
                         continueRunning = false;
                     }
@@ -58,5 +50,12 @@ public class MainMenu
                     break;
             }
         }
+    }
+
+    public static bool ConfirmExit()
+    {
+        Console.Write("Are you sure you want to exit? (Y/N): ");
+        string input = Console.ReadLine().ToUpper();
+        return input == "Y";
     }
 }

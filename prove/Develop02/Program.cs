@@ -13,8 +13,7 @@ class Program
     static void Main(string[] args)
     {
         List<string> currentJournalEntries = new List<string>();
-        List<DateTime> dateTimes = [];
-        MainMenu.DisplayMenu(currentJournalEntries, dateTimes);
+        MainMenu.DisplayMenu(currentJournalEntries);
     }
 
 
