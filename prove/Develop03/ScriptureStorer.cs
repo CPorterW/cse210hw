@@ -11,7 +11,8 @@ class ScriptureStorer
             {"JST 1 Peter 4:6","Because of this, is the gospel preached to them who are dead, that they might be judged according to the will of God."},
             {"Helaman 11:4","O Lord, do not suffer that this people shall be destroyed by the sword; but O Lord, rather let there be a famine in the land, to stir them up in remembrance of the Lord their God, and perhaps they will repent and turn unto thee."},
             {"Moses 6:55","And the Lord spake unto Adam, saying: Inasmuch as thy children are conceived in sin, even so when they begin to grow up, sin conceiveth in their hearts, and they taste the bitter, that they may know to prize the good."},
-            {"2 Nephi 2:2","Nevertheless, Jacob, my firstborn in the wilderness, thou knowest the greatness of God; and he shall consecrate thine afflictions for thy gain."}
+            {"2 Nephi 2:2","Nevertheless, Jacob, my firstborn in the wilderness, thou knowest the greatness of God; and he shall consecrate thine afflictions for thy gain."},
+            {"","Trust in the Lord with all thine heart; and lean not unto thine own understanding.\nIn all thy ways acknowledge him, and he shall direct thy paths."}
         };
 
         if (!_scripturesStored.ContainsKey(scriptureAddress))

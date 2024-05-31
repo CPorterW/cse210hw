@@ -1,5 +1,6 @@
 class WordRemover
 {
+    // I prefer to keep my definitions outside of my methods.
     private string _originalScripture;
     private List<string> _words;
     private Random _random;
