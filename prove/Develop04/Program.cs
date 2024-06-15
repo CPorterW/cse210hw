@@ -1,4 +1,9 @@
-
+/*
+The list activity counts entries, the console is kept clean, 
+no duplicate questions are used in the reflection activity, 
+I error-proofed type conversions, and the timer doesn't 
+interrupt the user mid-iteration. I spent 10+ hours on this.
+*/
 class Program
 {
     static void Main(string[] args)
@@ -42,10 +47,12 @@ class Program
                     Thread.Sleep(1000);
                     continue;
             }
-
-            activity.Start();
-            activity.RunActivity();
-            activity.End();
+            bool completed;
+            completed = activity.Start();
+            if (completed) {
+                activity.RunActivity();
+                activity.End();
+            }
         }
     }
 }

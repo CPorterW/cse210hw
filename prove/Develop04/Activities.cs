@@ -2,8 +2,8 @@ class BreathingActivity : Activity
 {
     public BreathingActivity() : base("Breathing Activity")
     {
-        title = "Breathing Activity";
-        description = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
+        _title = "Breathing Activity";
+        _description = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
     }
 
     public override void RunActivity()
@@ -26,8 +26,8 @@ class ReflectionActivity : Activity
 
     public ReflectionActivity() : base("Reflection Activity")
     {
-        title = "Reflection Activity";
-        description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+        _title = "Reflection Activity";
+        _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
 
     public override void RunActivity()
@@ -41,10 +41,10 @@ class ReflectionActivity : Activity
         Console.WriteLine(prompt);
         Carat();
         string question;
-        while (carat && questions.Count > 0 && IsTimeLeft()) {
+        while (_carat && questions.Count > 0 && IsTimeLeft()) {
             question = questions[random.Next(questions.Count)];
             Console.WriteLine(question);
-            carat = Carat();
+            _carat = Carat();
             questions.Remove(question);
         }
     }
@@ -56,13 +56,13 @@ class ListingActivity : Activity
 
     public ListingActivity() : base("Listing Activity")
     {
-        title = "Listing Activity";
-        description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+        _title = "Listing Activity";
+        _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     }
 
     public override void RunActivity()
     {
-        int itemCount = -1;
+        int itemCount = 0;
         Random random = new Random();
         string prompt = prompts[random.Next(prompts.Length)];
         Console.Clear();
@@ -70,10 +70,10 @@ class ListingActivity : Activity
         Console.WriteLine(prompt);
         Pause(5);
 
-        while (carat && IsTimeLeft())
+        while (_carat && IsTimeLeft())
         {
-            carat = Carat();
-            itemCount += 1;
+            _carat = Carat();
+            itemCount = _carat ? itemCount += 1 : itemCount;
         }
         
         Console.WriteLine("You listed " + itemCount + " items.");

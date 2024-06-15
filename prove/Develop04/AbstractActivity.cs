@@ -1,38 +1,40 @@
 abstract class Activity
 {
-    protected int duration;
-    protected string description;
-    protected string startingMessage;
-    protected string endingMessage;
-    protected string title;
-    protected bool carat;
-    DateTime endTime;
+    private int _duration;
+    protected string _description;
+    private string _startingMessage;
+    private string _endingMessage;
+    protected string _title;
+    protected bool _carat;
+    private DateTime _endTime;
 
-    public Activity(string description)
+    public Activity(string _description)
     {
-        this.description = description;
-        startingMessage = "Welcome to the ";
-        endingMessage = "Well done! You have completed the ";
-        carat = true;
+        this._description = _description;
+        _startingMessage = "Welcome to the ";
+        _endingMessage = "Well done! You have completed the ";
+        _carat = true;
     }
 
-    public void Start()
+    public bool Start()
     {
         Console.Write("How long do you want this activity to last (in seconds)? ");
         try{
-            duration = int.Parse(Console.ReadLine());
-            endTime = DateTime.Now.AddSeconds(duration);
-            Console.WriteLine(startingMessage + title + ". " + description);
+            _duration = int.Parse(Console.ReadLine());
+            _endTime = DateTime.Now.AddSeconds(_duration);
+            Console.WriteLine(_startingMessage + _title + ". " + _description);
             Console.Clear();
         }
         catch{
             Console.WriteLine("Enter an integer.");
             Pause(1);
+            return false;
         }
+        return true;
     }
 
     protected bool IsTimeLeft() {
-        return DateTime.Now < endTime; 
+        return DateTime.Now < _endTime; 
     }
 
     protected bool Carat() {
@@ -48,7 +50,7 @@ abstract class Activity
 
     public void End()
     {
-        Console.WriteLine(endingMessage + title + " activity!");
+        Console.WriteLine(_endingMessage + _title + " activity!");
         Pause(3);
     }
 
