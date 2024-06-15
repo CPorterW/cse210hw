@@ -5,19 +5,34 @@ abstract class Activity
     protected string startingMessage;
     protected string endingMessage;
     protected string title;
-    protected bool carat = true;
+    protected bool carat;
+    DateTime endTime;
 
     public Activity(string description)
     {
         this.description = description;
         startingMessage = "Welcome to the ";
         endingMessage = "Well done! You have completed the ";
+        carat = true;
     }
 
-    protected void Start()
+    public void Start()
     {
-        Console.WriteLine(startingMessage + title + ". " + description);
-        Console.Clear();
+        Console.Write("How long do you want this activity to last (in seconds)? ");
+        try{
+            duration = int.Parse(Console.ReadLine());
+            endTime = DateTime.Now.AddSeconds(duration);
+            Console.WriteLine(startingMessage + title + ". " + description);
+            Console.Clear();
+        }
+        catch{
+            Console.WriteLine("Enter an integer.");
+            Pause(1);
+        }
+    }
+
+    protected bool IsTimeLeft() {
+        return DateTime.Now < endTime; 
     }
 
     protected bool Carat() {

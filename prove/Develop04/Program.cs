@@ -13,7 +13,15 @@ class Program
             Console.WriteLine("3. Listing Activity");
             Console.WriteLine("4. Exit");
 
-            int choice = int.Parse(Console.ReadLine());
+            int choice = 0;
+            try{
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch(System.FormatException){
+                Console.Write("Please enter an integer.");
+                Thread.Sleep(1000);
+                continue;
+            }
 
             Activity activity;
             switch (choice)
@@ -31,9 +39,11 @@ class Program
                     return;
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
+                    Thread.Sleep(1000);
                     continue;
             }
 
+            activity.Start();
             activity.RunActivity();
             activity.End();
         }

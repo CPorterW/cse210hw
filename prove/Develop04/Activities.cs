@@ -1,6 +1,5 @@
 class BreathingActivity : Activity
 {
-    
     public BreathingActivity() : base("Breathing Activity")
     {
         title = "Breathing Activity";
@@ -9,11 +8,8 @@ class BreathingActivity : Activity
 
     public override void RunActivity()
     {
-        Start();
-        Console.Write("Enter the duration in seconds (try multiples of 16): ");
-        duration = int.Parse(Console.ReadLine());
         Console.Clear();
-        for (int i = 0; i < duration/16; i++)
+        while (IsTimeLeft())
         {
             Console.WriteLine("Breathe in...");
             Pause(8);
@@ -26,7 +22,7 @@ class BreathingActivity : Activity
 class ReflectionActivity : Activity
 {
     private static readonly string[] prompts = { "Think of a time when you stood up for someone else.", "Think of a time when you did something really difficult.", "Think of a time when you helped someone in need.", "Think of a time when you did something truly selfless." };
-    private static readonly string[] questions = { "Why was this experience meaningful to you?", "Have you ever done anything like this before?", "How did you get started?", "How did you feel when it was complete?", "What made this time different than other times when you were not as successful?", "What is your favorite thing about this experience?", "What could you learn from this experience that applies to other situations?", "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?" };
+    private List<string> questions = new List<string>{ "Why was this experience meaningful to you?", "Have you ever done anything like this before?", "How did you get started?", "How did you feel when it was complete?", "What made this time different than other times when you were not as successful?", "What is your favorite thing about this experience?", "What could you learn from this experience that applies to other situations?", "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?" };
 
     public ReflectionActivity() : base("Reflection Activity")
     {
@@ -36,7 +32,6 @@ class ReflectionActivity : Activity
 
     public override void RunActivity()
     {
-        Start();
         Console.WriteLine("Get ready...");
         Pause(3);
         Console.Clear();
@@ -45,11 +40,12 @@ class ReflectionActivity : Activity
         string prompt = prompts[random.Next(prompts.Length)];
         Console.WriteLine(prompt);
         Carat();
-        string question = questions[random.Next(questions.Length)];
-        while (carat) {
+        string question;
+        while (carat && questions.Count > 0 && IsTimeLeft()) {
+            question = questions[random.Next(questions.Count)];
             Console.WriteLine(question);
             carat = Carat();
-            question = questions[random.Next(questions.Length)];
+            questions.Remove(question);
         }
     }
 }
@@ -66,7 +62,6 @@ class ListingActivity : Activity
 
     public override void RunActivity()
     {
-        Start();
         int itemCount = -1;
         Random random = new Random();
         string prompt = prompts[random.Next(prompts.Length)];
@@ -75,12 +70,11 @@ class ListingActivity : Activity
         Console.WriteLine(prompt);
         Pause(5);
 
-        while (carat)
+        while (carat && IsTimeLeft())
         {
             carat = Carat();
             itemCount += 1;
         }
-        
         
         Console.WriteLine("You listed " + itemCount + " items.");
     }
