@@ -8,9 +8,9 @@ abstract class Activity
     protected bool _carat;
     private DateTime _endTime;
 
-    public Activity(string _description)
+    public Activity(string _title)
     {
-        this._description = _description;
+        this._title = _title;
         _startingMessage = "Welcome to the ";
         _endingMessage = "Well done! You have completed the ";
         _carat = true;
@@ -20,9 +20,8 @@ abstract class Activity
     {
         Console.Write("How long do you want this activity to last (in seconds)? ");
         try{
-            _duration = int.Parse(Console.ReadLine());
+            _duration = int.Parse(Console.ReadLine())+5;
             _endTime = DateTime.Now.AddSeconds(_duration);
-            Console.WriteLine(_startingMessage + _title + ". " + _description);
             Console.Clear();
         }
         catch{
@@ -30,11 +29,13 @@ abstract class Activity
             Pause(1);
             return false;
         }
+        Console.WriteLine(_startingMessage + _title + ". " + _description);
+        Pause(5);
         return true;
     }
 
     protected bool IsTimeLeft() {
-        return DateTime.Now < _endTime; 
+        return DateTime.Now < _endTime;
     }
 
     protected bool Carat() {
