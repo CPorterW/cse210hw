@@ -1,0 +1,24 @@
+@startuml
+ Shape <|-- Square
+Shape <|-- Rectangle 
+Shape <|-- Circle 
+class Shape{
+ - _color
+ + GetColor() 
+ + SetColor()
+ + {abstract} GetArea()
+ }
+ class Square{
+ - _side
+ + GetArea()
+ }
+ class Rectangle{
+ - _length
+ - _width
+ + GetArea()
+ }
+class Circle{
+ - _radius
+ + GetArea()
+ }
+ @enduml 
