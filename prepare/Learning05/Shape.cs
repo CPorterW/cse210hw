@@ -2,11 +2,21 @@ using System;
 
 public abstract class Shape
 {
-    public string Color { get; set; }
+    private string _color;
 
-    public Shape(string color)
+    public string GetColor()
     {
-        Color = color;
+        return _color;
+    }
+
+    public void SetColor(string color)
+    {
+        _color = color;
+    }
+
+    protected Shape(string color)
+    {
+        _color = color;
     }
 
     public abstract double GetArea();

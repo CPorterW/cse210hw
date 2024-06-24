@@ -14,7 +14,7 @@ class Program
 
         foreach (Shape shape in shapes)
         {
-            Console.WriteLine($"Shape Color: {shape.Color}, Area: {shape.GetArea()}");
+            Console.WriteLine($"Shape Color: {shape.GetColor()}, Area: {shape.GetArea()}");
         }
     }
 }
