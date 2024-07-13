@@ -30,7 +30,7 @@ class Program
             case ConsoleKey.DownArrow: newY++; break;
             case ConsoleKey.LeftArrow: newX--; break;
             case ConsoleKey.RightArrow: newX++; break;
-            case ConsoleKey.I: player.OpenInventory(); return;
+            case ConsoleKey.B: player.OpenInventory(); return;
             case ConsoleKey.M: DisplaySimplifiedMap(map); return;
         }
 
@@ -45,7 +45,7 @@ class Program
     {
         Console.SetCursorPosition(0, 26);
         Console.WriteLine($"Player Position: ({player.X}, {player.Y})");
-        Console.WriteLine("Press 'I' to open your Bag, 'M' for the Town Map, 'Q' to Quit");
+        Console.WriteLine("Press 'B' to open your Bag, 'M' for the Town Map, 'Q' to Quit");
     }
 
     static void DisplaySimplifiedMap(Map map)

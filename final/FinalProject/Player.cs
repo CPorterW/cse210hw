@@ -2,7 +2,7 @@ public class Player
 {
     public int X { get; private set; }
     public int Y { get; private set; }
-    public List<string> Bag { get; } = new List<string>{"Pokémon", "Pokédex", "Bag", "License", "<--", "Quit"};
+    public List<string> Bag { get; } = new List<string>{"Pokémon", "Pokédex", "Bag", "License", "Quit"};
 
     public Player(int startX, int startY)
     {
