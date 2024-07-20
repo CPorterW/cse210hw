@@ -1,6 +1,6 @@
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         Map map = new Map(300, 200);
         Player player = new Player(150, 100);
@@ -12,14 +12,14 @@ class Program
             DisplayPlayerInfo(player);
 
             ConsoleKeyInfo key = Console.ReadKey(true);
-            HandleInput(key, player, map);
+            await HandleInput(key, player, map);
 
             if (key.Key == ConsoleKey.Q)
                 break;
         }
     }
 
-    static void HandleInput(ConsoleKeyInfo key, Player player, Map map)
+    static async Task HandleInput(ConsoleKeyInfo key, Player player, Map map)
     {
         int newX = player.X;
         int newY = player.Y;
@@ -37,7 +37,7 @@ class Program
         if (map.CanMoveTo(newX, newY))
         {
             player.MoveTo(newX, newY);
-            map.CheckForEncounter(player);
+            await map.CheckForEncounter(player);
         }
     }
 
