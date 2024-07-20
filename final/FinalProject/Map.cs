@@ -4,8 +4,8 @@ using System.Text;
 public class Map
 {
     private Tile[,] tiles;
-    public int Width { get; }
-    public int Height { get; }
+    private int Width { get; }
+    private int Height { get; }
     private Encounter encounter;
     private TileAdder adder;
 
@@ -54,7 +54,7 @@ public class Map
             for (int x = 0; x < Width; x += 2)
             {
                 Console.ForegroundColor = tiles[x, y].Color;
-                Console.Write(GetSimplifiedSymbol(tiles[x, y].Type));
+                Console.Write(tiles[x, y].Type);
             }
             Console.WriteLine();
         }
@@ -76,22 +76,6 @@ public class Map
             }
         }
     }
-    private char GetSimplifiedSymbol(TileType type)
-    {
-        switch (type)
-        {
-            case TileType.Grass: return '·';
-            case TileType.Water: return '~';
-            case TileType.Path: return '=';
-            case TileType.Tree: return '♣';
-            case TileType.Mountain: return '▲';
-            case TileType.Building: return '□';
-            case TileType.Ledge: return '_';
-            case TileType.Rock: return '○';
-            default: return '?';
-        }
-    }
-
     public bool CanMoveTo(int x, int y)
     {
         if (x < 0 || x >= Width || y < 0 || y >= Height)

@@ -84,7 +84,7 @@ public class TileAdder
         }
     }
 
-    public void AddRocksBorderingWater()
+    private void AddRocksBorderingWater()
     {
         for (int y = 0; y < Height; y++)
         {
