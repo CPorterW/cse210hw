@@ -67,11 +67,6 @@ public class Encounter{
         return null;
     }
 
-    private static string Input(string prompt)
-    {
-        Console.Write(prompt);
-        return Console.ReadLine();
-    }    
     public async Task RunPythonBattle()
     {
         string pythonInterpreterPath = GetPythonInterpreterPath();
@@ -82,8 +77,6 @@ public class Encounter{
             return;
         }
         string pythonScriptPath = @"interactive_battle.py";
-        Console.WriteLine($"Python interpreter: {pythonInterpreterPath}");
-        Console.WriteLine($"Python script: {pythonScriptPath}");
 
         ProcessStartInfo start = new ProcessStartInfo
         {
@@ -102,13 +95,11 @@ public class Encounter{
             try
             {
                 process.Start();
-                Console.WriteLine("Process started");
                 var outputTask = ConsumeOutputAsync(process);
                 var errorTask = ConsumeErrorAsync(process.StandardError);
                 await process.WaitForExitAsync();
                 await Task.WhenAll(outputTask, errorTask);
 
-                Console.WriteLine($"Python script exited with code: {process.ExitCode}");
             }
             catch (Exception ex)
             {

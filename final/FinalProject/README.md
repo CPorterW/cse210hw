@@ -12,3 +12,4 @@ Use the arrow keys to move. Walking in the grass (which looks like green periods
 
 ## How this meets and exceeds requirements:
 
+I used abstraction, inheritance, and encapsulation (I might have missed some encapsulation opportunities, I refactored frequently, and haven't touched it up since). I poured 20+ hours into the c# portion of this project. 
