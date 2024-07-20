@@ -1,8 +1,8 @@
 public class TileAdder
 {
-    public int Width { get; private set; }
-    public int Height { get; private set; }
-    private Tile[,] tiles;
+    protected int Width { get; private set; }
+    protected int Height { get; private set; }
+    protected Tile[,] tiles;
 
     public TileAdder(int width, int height)
     {
